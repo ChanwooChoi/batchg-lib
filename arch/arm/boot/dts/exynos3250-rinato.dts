@@ -92,7 +92,7 @@
 				};
 			};
 
-			charger {
+			charger: charger {
 				compatible = "maxim,max77836-charger";
 
 				maxim,constant-uvolt = <4350000>;
@@ -305,6 +305,10 @@
 			#clock-cells = <1>;
 			clock-output-names = "s2mps14_ap", "unused",
 				"s2mps14_bt";
+		};
+
+		s2mps14_rtc: rtc {
+			compatible = "samsung,s2mps14-rtc";
 		};
 
 		regulators {
@@ -624,11 +628,23 @@
 	samsung,i2c-max-bus-freq = <400000>;
 	status = "okay";
 
-	fuelgauge@36 {
+	fuelgauge: fuelgauge@36 {
 		compatible = "maxim,max77836-battery";
 		interrupt-parent = <&gpx1>;
 		interrupts = <2 8>;
 		reg = <0x36>;
+
+		battery-hw-information {
+			voltage = <3500>;
+		};
+
+		battery-charging {
+			batchg,extcon = <&muic>;
+			batchg,charger = <&charger>;
+			batchg,fuelgauge = <&fuelgauge>;
+			batchg,rtc = <&s2mps14_rtc>;
+			battery-info
+		};
 	};
 };
 
