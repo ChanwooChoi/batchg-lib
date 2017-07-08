@@ -71,6 +71,7 @@ static const struct mfd_cell s2mps11_devs[] = {
 		.name = "s2mps11-regulator",
 	}, {
 		.name = "s2mps14-rtc",
+		.of_compatible = "samsung,s2mps14-rtc",
 	}, {
 		.name = "s2mps11-clk",
 		.of_compatible = "samsung,s2mps11-clk",
