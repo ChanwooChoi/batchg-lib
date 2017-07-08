@@ -99,6 +99,7 @@
 				maxim,fast-charge-uamp = <225000>;
 				maxim,eoc-uamp = <7500>;
 				maxim,ovp-uvolt = <6500000>;
+				charger-supply = <&charger_reg>;
 			};
 		};
 	};
